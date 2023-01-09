@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="styles.css" rel="stylesheet">
+
+    <!-- JQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <script defer src="game.js"></script>
+    <script defer src="chat.js"></script>
+
+    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/d92537b213.js" crossorigin="anonymous"></script>
+    <title>Text Adventure</title>
+</head>
+
+<body>
+    <!-- top nav bar, to be moved out as template later -->
+    <div class="topnav" id="myTopnav">
+        <div class="topnavContents">
+            <a class="logo" href="stories.html">Text Adventures</a>
+            <!-- <a href="#">My Games</a> -->
+            <!-- <a href="#">Join a game</a> -->
+            <!-- <a class="btn" id="btnSecondary" href="register.html">Register</a> -->
+            <!-- <a class="btn" id="btnPrimary" href="login.html">Login</a> -->
+            <!--<a href="javascript:void(0);" class="icon" onclick="expandMenu()">
+                <i class="fa fa-bars"></i>
+            </a>-->
+        </div>
+    </div>
+    <!-- Top Nav END-->
+    <div class="col-8 col-s-12">
+        <div id="title"><h1>Title</h1></div>
+        <div id="text">Text</div>
+        <div id="option-buttons" class="btn-grid">
+            <button class="btn">Option 1</button>
+            <button class="btn">Option 2</button>
+            <button class="btn">Option 3</button>
+            <button class="btn">Option 4</button>
+        </div>
+    </div>
+    <div class="col-4 col-s-12">
+        <div class="aside">
+            <p>Chat</p>
+            <div class="top_div" id="messages">
+                <!-- Messages show here -->
+            </div>
+            <div class="bottom_div">
+                <input type="text" id="msg" />
+                <button id="send"><i class="fa-solid fa-paper-plane"></i></i></button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
