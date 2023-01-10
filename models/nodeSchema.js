@@ -1,15 +1,26 @@
 let mongoose = require('mongoose');
 
-let nodeSchema = new mongoose.Schema({
-  id: Number,
-  text: String,
-  options: [
-    {text: String, nextNode: Number}
-  ]
+let optionsSchema = new mongoose.Schema({
+  optText: {
+    type: String,
+    required: true
+  },
+  nextNode: {
+    type: Number,
+    required: true
+  }
 });
 
-//Find method here?
+let nodeSchema = new mongoose.Schema({
+  nodeId: {
+    type: Number,
+    required: true
+  },
+  text: {
+    type: String,
+    requied: true
+  },
+  options: [optionsSchema]
+});
 
-let Node = mongoose.model('Node', nodeSchema);
-
-module.exports = Node;
+module.exports = mongoose.model('storyNode', nodeSchema);

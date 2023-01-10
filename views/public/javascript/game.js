@@ -5,7 +5,7 @@ let state = {}
 
 function startGame() {
   state = {}
-  showTextNode(0)
+  //showTextNode(0)
 }
 
 function showTextNode(textNodeIndex) {
@@ -36,12 +36,12 @@ function selectOption(option) {
     return startGame()
   }
   state = Object.assign(state, option.setState)
-  showTextNode(nextTextNodeId)
+  //showTextNode(nextTextNodeId)
 }
 
 //STORY
 const textNodes = [
-  {
+/*   {
     id: 0,
     text: 'Please wait for all players before pressing start...',
     options: [
@@ -50,7 +50,7 @@ const textNodes = [
         nextText: 1
       }
     ]
-  },
+  }, */
   {
     id: 1,
     text: 'You wake up in a strange place and you see a jar of blue goo near you.',

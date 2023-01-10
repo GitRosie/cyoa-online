@@ -51,12 +51,12 @@ $(function () {
 
     //##### GAMEPLAY #####
     //At start show holding text
-    showTextNode(0);
+    //showTextNode(0);
     
     //Clicked on one of the options to vote
-    $('.btn').click(() => {
-        let vote = $('.btn');
-    });
+    //$('.btn').click(() => {
+    //    let vote = $('.btn');
+    //});
 });
 //Chat Functions
 //Add message text to page
@@ -66,6 +66,5 @@ function prependMsg(msg, msgClass) {
 }
 //Game Functions
 function startGame() {
-    let state = {};
-    showTextNode(0)
+    //showTextNode(0)
 }

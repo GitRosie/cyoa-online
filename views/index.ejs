@@ -10,8 +10,8 @@
 
     <!-- JQuery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    
-    <script defer src="./public/javascript/game.js"></script>
+
+    <!--<script defer src="./public/javascript/game.js"></script>-->
     <script defer src="./public/javascript/sockets.js"></script>
 
     <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
@@ -36,14 +36,18 @@
     </div>
     <!-- Top Nav END-->
     <div class="col-8 col-s-12">
-        <div id="title"><h1>Title</h1></div>
-        <div id="text">Text</div>
-        <div id="option-buttons" class="btn-grid">
-            <button class="btn">Option 1 <span id="vote-count"></span></button>
-            <button class="btn">Option 2 <span id="vote-count"></span></button>
-            <button class="btn">Option 3 <span id="vote-count"></span></button>
-            <button class="btn">Option 4 <span id="vote-count"></span></button>
+        <div id="title">
+            <h1>Morning Nightmare</h1>
         </div>
+        <% node.forEach(node=> { %>
+            <div id="text">
+                <%= node.text %>
+            </div>
+        <% }) %>
+
+        
+        
+
     </div>
     <div class="col-4 col-s-12">
         <div class="aside">

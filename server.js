@@ -1,50 +1,39 @@
+//Import Libraries
+require('dotenv').config();
 let express = require('express');
-let http = require('http');
 let path = require('path')
 let mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
-let Node = require('./models/nodeSchema').Node;
-let routes = require('./routes/index')
-
-let port = 4000;
 
 //Initialise instance of express
-app=express();
+app = express();
 
 //Location of views
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs'); //engine used by views
 
+//Allow server to use JSON
+app.use(express.json())
+
 //Static resources
 app.use('/public', express.static(__dirname + '/views/public'));
-
-app.get('/', routes);
+//router
+let router = require('./routes/index')
+app.use('/', router);
 
 
 //Connect to MongoDB - Atlas
-//Username= username1
-//Password = rS2xWgCUBv41Ta97
-let url = "mongodb+srv://username1:rS2xWgCUBv41Ta97@cluster0.xgfz3di.mongodb.net/?retryWrites=true&w=majority"
-mongoose.connect(url, {
+mongoose.connect(process.env.DATABASE_URL, {
     useUnifiedTopology: true,
-    useNewURLParser:true
+    useNewURLParser: true
 });
+let db = mongoose.connection;
+db.on('error', (err) => console.log(err)); //Log problem connecting to db
+db.once('open', () => console.log('Connected to database')); //Log that connection is successful
 
-/* 
-let server = http.createServer(function(req,res) {
-    Node.find({}, function(err, result) {
-        //error handler
-        if (err) {
-            console.log(err);
-        }
-        //convert to JSON
-        res.setHeader("content-type", "text/json");
-        //Return result as string
-        res.end(JSON.stringify({"nodes": result}))
-    }); 
-});
-*/
-
+//Port to listen on
+let port = 4000;
+//Start server
 app.listen(port, () => {
     console.log("Listening on port: " + port);
 });
