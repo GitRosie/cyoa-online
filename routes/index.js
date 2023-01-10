@@ -5,9 +5,9 @@ let storyNode = require('../models/nodeSchema')
 //Get index page & first story node
 router.get('/', async (req, res) => {
     try {
-        let node = await storyNode.find({"nodeId": 0});
+        let data = await storyNode.find({"nodeId": 0});
         res.render('index', {
-            node: node
+            node: data
         });
     } catch (err) {
         //Catch error on server

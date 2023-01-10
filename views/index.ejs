@@ -37,17 +37,21 @@
     <!-- Top Nav END-->
     <div class="col-8 col-s-12">
         <div id="title">
-            <h1>Morning Nightmare</h1>
+            <h1>Story Title</h1>
         </div>
         <% node.forEach(node=> { %>
             <div id="text">
                 <%= node.text %>
             </div>
+            <div id="option-buttons" class="btn-grid">
+                <% node.options.forEach(option=> { %>
+                    <button class="btn" id="<%= option.nextNode %>">
+                        <%= option.optText %> (<span id="vote-count">0</span>)
+                    </button>
+                <% }) %>
+            </div>
         <% }) %>
-
         
-        
-
     </div>
     <div class="col-4 col-s-12">
         <div class="aside">
