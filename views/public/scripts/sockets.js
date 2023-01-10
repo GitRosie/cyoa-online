@@ -10,11 +10,11 @@ $(function () {
         prependMsg(data.name + ": " + data.message, 'message');
     });
 
-    socket.on('user-connected', name => {
+    socket.once('user-connected', name => {
         prependMsg(name + ' joined the chat', 'message');
     });
 
-    socket.on('user-disconnected', name => {
+    socket.once('user-disconnected', name => {
         prependMsg(name + ' left the chat', 'message');
     });
 

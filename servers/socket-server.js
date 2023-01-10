@@ -1,5 +1,3 @@
-const { text } = require("body-parser");
-
 let port = 3000;
 let users = {};
 let votes = {};
