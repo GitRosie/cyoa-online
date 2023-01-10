@@ -11,10 +11,10 @@
     <!-- JQuery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-    <!--<script defer src="./public/javascript/game.js"></script>-->
-    <script defer src="./public/javascript/sockets.js"></script>
-
+    <!-- Multiplayer Tools-->
+    <script defer src="./public/scripts/sockets.js"></script>
     <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/d92537b213.js" crossorigin="anonymous"></script>
     <title>Text Adventure</title>
@@ -25,13 +25,6 @@
     <div class="topnav" id="myTopnav">
         <div class="topnavContents">
             <a class="logo" href="stories.html">Text Adventures</a>
-            <!-- <a href="#">My Games</a> -->
-            <!-- <a href="#">Join a game</a> -->
-            <!-- <a class="btn" id="btnSecondary" href="register.html">Register</a> -->
-            <!-- <a class="btn" id="btnPrimary" href="login.html">Login</a> -->
-            <!--<a href="javascript:void(0);" class="icon" onclick="expandMenu()">
-                <i class="fa fa-bars"></i>
-            </a>-->
         </div>
     </div>
     <!-- Top Nav END-->
@@ -44,8 +37,8 @@
                 <%= node.text %>
             </div>
             <div id="option-buttons" class="btn-grid">
-                <% node.options.forEach(option=> { %>
-                    <button class="btn" id="<%= option.nextNode %>">
+                <% node.options.forEach(option => { %>
+                    <button type="submit" class="btn" id="<%= option.nextNode %>">
                         <%= option.optText %> (<span id="vote-count">0</span>)
                     </button>
                 <% }) %>

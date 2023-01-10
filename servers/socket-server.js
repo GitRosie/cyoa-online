@@ -1,5 +1,8 @@
+const { text } = require("body-parser");
+
 let port = 3000;
 let users = {};
+let votes = {};
 
 //Run server
 let io = require("socket.io")(port, {
@@ -31,7 +34,7 @@ io.on('connection', socket => {
     delete users[socket.id]
   });
 
-  //Emit vote
+  //Emit that a user has voted
   socket.on('vote', vote => {
     socket.broadcast.emit('user-voted', { vote: vote, name: users[socket.id] });
   });

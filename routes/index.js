@@ -17,8 +17,18 @@ router.get('/', async (req, res) => {
 });
 
 //get one node: nextNode
-router.get('/{"nodeId', (req, res) => {
-
+router.get('/:nodeId', async (req, res) => {
+    try {
+        let nodeId = req.params.nodeId;
+        let data = await storyNode.find({"nodeId": nodeId});
+        res.render('index', {
+            node: data
+        });
+    } catch (err) {
+        //Catch error on server
+        res.status(500).json({ message: err.message })
+        //res.redirect('/');
+    }
 });
 
 //create a node

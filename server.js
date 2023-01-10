@@ -33,7 +33,7 @@ db.once('open', () => console.log('Connected to database')); //Log that connecti
 
 //Port to listen on
 let port = 4000;
-//Start server
+//Start app
 app.listen(port, () => {
     console.log("Listening on port: " + port);
 });
