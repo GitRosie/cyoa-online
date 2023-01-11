@@ -51,9 +51,10 @@ $(function () {
 
     //##### GAMEPLAY #####
     //One of the option buttons clicked
-    $(".btn").click(() => {
-        let vote = $('.btn').attr('id');
-        let voteText = $('.btn').text();
+    $(".btn").click((e) => {
+        let vote = e.target.id;
+        //console.log(vote);
+        let voteText = $(e.target).html();
         socket.emit('vote', vote)
         prependMsg('You voted: ' + voteText, 'message sent');
     });
