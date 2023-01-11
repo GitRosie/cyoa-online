@@ -31,8 +31,9 @@ router.get('/:nodeId', async (req, res) => {
     }
 });
 
+
 //create a node
-router.post('/', async (req, res) => {
+/* router.post('/', async (req, res) => {
     let node = new storyNode({
         nodeId: req.body.nodeId,
         text: req.body.text,
@@ -49,14 +50,6 @@ router.post('/', async (req, res) => {
         //Invalid data status
         res.status(400).json({message: err.message})
     }
-});
-
-async function getNode(req, res, next) {
-    try {
-        node = await storyNode.find({ "id": nodeId })
-    } catch (err) {
-
-    }
-}
+}); */
 
 module.exports = router;

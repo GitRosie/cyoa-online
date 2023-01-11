@@ -5,6 +5,14 @@ $(function () {
     //check if there is a cookie storing name
     checkCookie()
 
+    //Initialise votes
+    //let votes = {};
+    //$('.btn').each((i, obj) => {
+        //console.log(obj.id);
+        //votes[i] = "{ label: " + obj.id + ", votes:  0},";
+    //});
+    //console.log(votes);
+
     // ##### CHAT FEATURES #####
     socket.on('received-message', data => {
         prependMsg(data.name + ": " + data.message, 'message');
@@ -16,6 +24,10 @@ $(function () {
 
     socket.once('user-disconnected', name => {
         prependMsg(name + ' left the chat', 'message');
+    });
+
+    socket.on('nextId', nextId => {
+        directToNextNode(nextId);
     });
 
     socket.on('user-voted', data => {
@@ -48,7 +60,6 @@ $(function () {
         }
     });
 
-
     //##### GAMEPLAY #####
     //One of the option buttons clicked
     $(".btn").click((e) => {
@@ -59,14 +70,19 @@ $(function () {
         prependMsg('You voted: ' + voteText, 'message sent');
     });
 });
-//Chat Functions
+
+function directToNextNode(nextId) {
+    url = 'http://localhost:4000/' + nextId;
+    console.log(url)
+    location.href = url;
+};
+
 //Add message text to page
 function prependMsg(msg, msgClass) {
     $("#messages").prepend("<p class=\"" + msgClass + "\">" + msg + "</p>");
     $("#msg").val("");
-}
+};
 
-//Game Functions
 function checkCookie() {
     let username = getCookie("username");
     if (username != "") {
@@ -77,31 +93,33 @@ function checkCookie() {
         username = prompt("Please enter your name:", "");
         if (username != "" && username != null) {
             setCookie("username", username, 365);
+        } else {
+            username = 'Guest';
         }
         //Show that you successfully joined the chat.
         prependMsg('You joined the chat', 'message sent')
         socket.emit('new-user', username)
-    }
-}
+    };
+};
 
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    let expires = "expires="+d.toUTCString();
+    let expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-  }
-  
-  function getCookie(cname) {
+};
+
+function getCookie(cname) {
     let name = cname + "=";
     let ca = document.cookie.split(';');
-    for(let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
     }
     return "";
-  }
+};

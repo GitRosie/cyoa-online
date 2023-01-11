@@ -1,6 +1,7 @@
 let port = 3000;
 let users = {};
 let votes = {};
+let count = 0;
 
 //Run server
 let io = require("socket.io")(port, {
@@ -10,13 +11,9 @@ let io = require("socket.io")(port, {
   },
 });
 
-
 io.on('connection', socket => {
   //Emit message that user has joined
   socket.on('new-user', name => {
-    if(name == null) {
-      name = 'Guest';
-    }
     users[socket.id] = name;
     socket.broadcast.emit('user-connected', users[socket.id]);
   });
@@ -32,9 +29,25 @@ io.on('connection', socket => {
     delete users[socket.id]
   });
 
-  //Emit that a user has voted
+  //On new vote
   socket.on('vote', vote => {
+
+    //if user hasn't already voted, log vote
+    votes[vote] = vote;
+    console.log(votes);
+
+    //Emit that a user has voted
     socket.broadcast.emit('user-voted', { vote: vote, name: users[socket.id] });
+
+    //Check if all players have voted
+
+    //once all voted set nextID to most common in votes
+    let nextId = vote;
+    //clear ready for next round of voting
+    votes = {};
+    //Pass nextId in url
+    io.emit('nextId', nextId);
+
   });
 
 });
