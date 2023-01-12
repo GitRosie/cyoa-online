@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "concurrently \"nodemon servers/socket-server.js\" \"nodemon server.js\"",
-    "start": "node servers/socket-server.js & node server.js && fg"
+    "dev": "server.js",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
