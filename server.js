@@ -15,13 +15,15 @@ app = express();
 //CORS
 app.use(
   cors({
-    origin: "*",
+    origin: "https://cyoa-online.herokuapp.com",
     methods: ["GET", "POST"],
     credentials: true,
   })
 );
 
-let server = http.createServer(app);
+let server = http.createServer(function(app, req, res) {
+  res.writeHead(app, {"Access-Control-Allow-Origin": "https://cyoa-online.herokuapp.com"})
+});
 
 //Location of views
 app.set('views', path.join(__dirname, '/views'));
