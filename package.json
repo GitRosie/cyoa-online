@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "concurrently \"nodemon servers/socket-server.js\" \"nodemon server.js\"",
-    "start": "concurrently \"node servers/socket-server.js\" \"node server.js\""
+    "start": "node servers/socket-server.js & node server.js"
   },
   "author": "",
   "license": "ISC",
