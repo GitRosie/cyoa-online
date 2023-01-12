@@ -15,7 +15,7 @@ app = express();
 //CORS
 app.use(
   cors({
-    origin: "cyoa-online.herokuapp.com*",
+    origin: "*",
     methods: ["GET", "POST"],
     credentials: true,
   })
