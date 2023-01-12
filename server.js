@@ -6,11 +6,19 @@ let http = require('http');
 let mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 let socketIO = require('socket.io');
+let cors = require('cors');
 
 let port = 4000;
 
 //Initialise instance of express
 app = express();
+//CORS
+app.use(
+  cors({
+    origin: "cyoa-online.herokuapp.com",
+    methods: ["GET", "POST"]
+  })
+)
 
 let server = http.createServer(app);
 
@@ -39,14 +47,6 @@ db.once('open', () => console.log('Connected to database')); //Log that connecti
 
 //Run socket server
 let io = socketIO(server);
-
-(server, {
-  cors: {
-    origin: "https://cyoa-online.herokuapp.com/",
-    methods: ["GET", "POST"]
-  },
-});
-
 
 let users = {};
 let votes = {};
