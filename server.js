@@ -39,9 +39,10 @@ db.once('open', () => console.log('Connected to database')); //Log that connecti
 
 //Run socket server
 let io = socketIO(server);
+
 (server, {
   cors: {
-    origin: "http://localhost:4000",
+    origin: "https://cyoa-online.herokuapp.com/",
     methods: ["GET", "POST"]
   },
 });
