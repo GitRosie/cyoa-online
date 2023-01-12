@@ -39,7 +39,7 @@ let users = {};
 let votes = {};
 
 //Run server
-let io = require("socket.io")(socketPort, {
+let io = require("socket.io")(process.env.PORT || socketPort, {
   cors: {
     origin: "http://localhost:4000",
     methods: ["GET", "POST"]
@@ -88,6 +88,6 @@ io.on('connection', socket => {
 });
 
 //Start app
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log("Listening on port: " + port);
 });
