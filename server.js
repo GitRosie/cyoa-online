@@ -39,6 +39,13 @@ db.once('open', () => console.log('Connected to database')); //Log that connecti
 
 //Run socket server
 let io = socketIO(server);
+(server, {
+  cors: {
+    origin: "http://localhost:4000",
+    methods: ["GET", "POST"]
+  },
+});
+
 
 let users = {};
 let votes = {};
@@ -87,5 +94,5 @@ io.on('connection', socket => {
 
 //Start app
 server.listen(process.env.PORT || port, () => {
-    console.log("Listening on port: " + port);
+    
 });
