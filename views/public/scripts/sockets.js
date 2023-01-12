@@ -1,6 +1,8 @@
 let socket;
 $(function () {
-    socket = io('http://localhost:4000');
+    //socket = io('http://localhost:4000');
+    socket = io('https://cyoa-online.herokuapp.com/');
+
     //check if there is a cookie storing name
     checkCookie()
 
@@ -71,7 +73,8 @@ $(function () {
 });
 
 function directToNextNode(nextId) {
-    url = 'http://localhost:4000/' + nextId;
+    //url = 'http://localhost:4000/' + nextId;
+    url = 'https://cyoa-online.herokuapp.com/' + nextId;
     console.log(url)
     location.href = url;
 };
