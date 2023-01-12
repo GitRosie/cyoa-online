@@ -21,9 +21,14 @@ app.use(
   })
 );
 
-let server = http.createServer(function(app, req, res) {
-  res.writeHead(app, {"Access-Control-Allow-Origin": "https://cyoa-online.herokuapp.com"})
-});
+let server = http.createServer(app);
+server.use(
+  cors({
+    origin: "https://cyoa-online.herokuapp.com",
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+)
 
 //Location of views
 app.set('views', path.join(__dirname, '/views'));
@@ -97,6 +102,4 @@ io.on('connection', socket => {
 });
 
 //Start app
-server.listen(process.env.PORT || port, () => {
-    
-});
+server.listen(process.env.PORT || port, () => { console.log("Server listening")});
