@@ -39,12 +39,13 @@ let users = {};
 let votes = {};
 
 //Run server
-let io = require("socket.io")(process.env.PORT || socketPort, {
+let io = require("socket.io")
+/* (process.env.PORT || socketPort, {
   cors: {
     origin: "http://localhost:4000",
     methods: ["GET", "POST"]
   },
-});
+}); */
 
 io.on('connection', socket => {
   //Emit message that user has joined
