@@ -16,9 +16,10 @@ app = express();
 app.use(
   cors({
     origin: "cyoa-online.herokuapp.com",
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST"],
+    credentials: true,
   })
-)
+);
 
 let server = http.createServer(app);
 
