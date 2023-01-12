@@ -39,7 +39,7 @@ let users = {};
 let votes = {};
 
 //Run server
-let io = require("socket.io")(process.env.PORT || socketPort, {
+let io = require("socket.io")(process.env.socketPort || socketPort, {
   cors: {
     origin: "http://localhost:4000",
     methods: ["GET", "POST"]
