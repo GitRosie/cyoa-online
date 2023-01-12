@@ -1,7 +1,6 @@
 let socket;
-
 $(function () {
-    socket = io('http://localhost:3000');
+    socket = io('http://localhost:4000');
     //check if there is a cookie storing name
     checkCookie()
 

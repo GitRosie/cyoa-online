@@ -1,15 +1,18 @@
 //Import Libraries
 require('dotenv').config();
 let express = require('express');
-let path = require('path')
+let path = require('path');
+let http = require('http');
 let mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
+let socketIO = require('socket.io');
 
 let port = 4000;
-let socketPort = 3000,
 
 //Initialise instance of express
 app = express();
+
+let server = http.createServer(app);
 
 //Location of views
 app.set('views', path.join(__dirname, '/views'));
@@ -34,20 +37,14 @@ let db = mongoose.connection;
 db.on('error', (err) => console.log(err)); //Log problem connecting to db
 db.once('open', () => console.log('Connected to database')); //Log that connection is successful
 
-//Socket IO
+//Run socket server
+let io = socketIO(server);
+
 let users = {};
 let votes = {};
 
-//Run server
-let io = require("socket.io")
-/* (process.env.PORT || socketPort, {
-  cors: {
-    origin: "http://localhost:4000",
-    methods: ["GET", "POST"]
-  },
-}); */
-
 io.on('connection', socket => {
+
   //Emit message that user has joined
   socket.on('new-user', name => {
     users[socket.id] = name;
@@ -89,6 +86,6 @@ io.on('connection', socket => {
 });
 
 //Start app
-app.listen(process.env.PORT || port, () => {
+server.listen(process.env.PORT || port, () => {
     console.log("Listening on port: " + port);
 });
