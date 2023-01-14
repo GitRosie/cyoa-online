@@ -58,10 +58,12 @@
   width:85%;
   position: absolute;
   bottom: 5px;
+  clear: both;
 }
 
 #send {
   color: #515151;
+
 }
 
 .message {
