@@ -55,14 +55,17 @@
 }
 
 .bottom_div {
+  width:85%;
   position: absolute;
   bottom: 5px;
-  clear: both;
 }
 
+#msg {
+  width: 80%;
+}
 #send {
+  width: 15%;
   color: #515151;
-
 }
 
 .message {
