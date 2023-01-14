@@ -76,14 +76,14 @@
   border: 1px solid black;
   border-radius: 5px;
   float: left;
-  box-shadow: 1px 2px #4143a8;
-  background-color: #5255d2;
+  box-shadow: 1px 2px #9c6c85;
+  background-color: #be84a3;
 }
 
 .sent {
   margin-left: auto;
-  background-color: #9d64ba;
-  box-shadow: 1px 2px #764b8c;
+  background-color: #00bfb2;
+  box-shadow: 1px 2px #00998f;
 }
 
 .empty {
