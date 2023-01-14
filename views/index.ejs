@@ -39,7 +39,7 @@
             </div>
             <div id="option-buttons" class="btn-grid">
                 <% node.options.forEach(option=> { %>
-                    <button type="submit" class="btn" id="<%= option.nextNode %>">
+                    <button type="submit" label="<%= option.nextNode %>" class="btn" id="<%= option.nextNode %>">
                         <%= option.optText %>
                             <!--(<span id="vote-count">0</span>) -->
                     </button>
@@ -55,8 +55,8 @@
                 <!-- Messages show here -->
             </div>
             <div class="bottom_div">
-                <input type="text" id="msg" />
-                <button id="send"><i class="fa-solid fa-paper-plane"></i></i></button>
+                <input type="text" label="your message" id="msg" />
+                <button id="send" label="send"><i class="fa-solid fa-paper-plane"></i></i></button>
             </div>
         </div>
     </div>
